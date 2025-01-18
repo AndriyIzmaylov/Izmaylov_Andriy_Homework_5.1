@@ -29,13 +29,14 @@ import keyword
 
 
 def variable_check(variable_name):
-    pattern = r'^(?!\d)(?!.*[A-Z])(?!.*[^a-z0-9_])(?!.*__.*$)[a-z_][a-z0-9_]*$'
+    pattern = r'^(?!__+$)(?!\d)(?!.*[A-Z])(?!.*[^a-z0-9_])(__[a-z]|[a-z_])[a-z0-9_]*$'
     if re.match(pattern, variable_name) and variable_name not in keyword.kwlist:
         return True
     return False
 
 
 test_names = [
+    "__name",
     " ",
     "_",
     "__",
